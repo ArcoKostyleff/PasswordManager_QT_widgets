@@ -42,6 +42,12 @@ void MainWindow::on_login_Button_clicked()
         ui->auth_text->setText("successfull!");
         m_login_form_ptr -> show();
         this->close();
-    }else  ui->auth_text->setText("govno!");
+    }else  {
+        ui->auth_text->setStyleSheet("QLabel { background-color : white; color : red; }");
+        ui->loginLine->setStyleSheet("QLineEdit {background-color : white; color : red; }");
+        ui->passwordLine->setStyleSheet("QLineEdit {background-color : white; color : red; }");
+        ui->auth_text->setText("wrong login/password!");
+
+    }
 }
 
