@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LoginForm</class>
+ <widget class="QWidget" name="LoginForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>601</width>
+    <height>405</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_3">
+   <item row="0" column="0">
+    <widget class="QMenuBar" name="menubar">
+     <widget class="QMenu" name="menuset_new_db">
+      <property name="title">
+       <string>set new db</string>
+      </property>
+      <addaction name="actionadd_path"/>
+     </widget>
+     <addaction name="menuset_new_db"/>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="0">
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="3" column="0">
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>Update Table</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLineEdit" name="loginLine">
+         <property name="text">
+          <string>Find </string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QTableWidget" name="tableWidget">
+         <row>
+          <property name="text">
+           <string>VK</string>
+          </property>
+         </row>
+         <column>
+          <property name="text">
+           <string>name</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>login</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>password</string>
+          </property>
+         </column>
+         <item row="0" column="0">
+          <property name="text">
+           <string>VK</string>
+          </property>
+         </item>
+         <item row="0" column="1">
+          <property name="text">
+           <string>alex</string>
+          </property>
+         </item>
+         <item row="0" column="2">
+          <property name="text">
+           <string>alex</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="add_button">
+       <property name="text">
+        <string>Add new</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>3</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <action name="actionadd_path">
+   <property name="text">
+    <string>add path</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
