@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QSqlError>
 #include <QDebug>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -13,18 +14,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     qDebug() << "go on";
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("D:\\QTProj\\PasswordManager\\proj.db");
+    db.setDatabaseName("proj2.db");
     db.open();
-    QSqlQuery query;
-    query.exec("SELECT id, u_login, u_password FROM users");
-
-    while (query.next()) { qDebug() << "2";
-      QString _id = query.value(0).toString();
-      QString login = query.value(1).toString();
-      QString password = query.value(2).toString();
-      m_users_map.insert(login, password);
-      qDebug() << login << " "<< password ;
-    }
+    updateUsers();
 }
 
 MainWindow::~MainWindow()
@@ -32,9 +24,20 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::recieveData(QString login, QString password)
+{
+    qDebug()<< login <<" "<< password;
+
+    QSqlQuery query(db);
+    query.exec();
+    if(!query.exec("INSERT INTO users ( u_login, u_password) VALUES ('"+login+"', '"+password+"')")) qDebug() <<"Error putting values: "<<query.lastError().text();
+
+}
+
 void MainWindow::on_login_Button_clicked()
 {
-    qDebug() << 1 << " "<< 1 ;
+    updateUsers();
+
     QString login_st = ui->loginLine->text();
     QString password_st = ui->passwordLine->text();
      qDebug() << login_st << " "<< password_st ;
@@ -48,6 +51,33 @@ void MainWindow::on_login_Button_clicked()
         ui->passwordLine->setStyleSheet("QLineEdit {background-color : white; color : red; }");
         ui->auth_text->setText("wrong login/password!");
 
+    }
+}
+
+
+void MainWindow::on_registration_button_clicked()
+{
+    m_register_form_ptr = new RegisterForm(this);
+if (connect(m_register_form_ptr, &RegisterForm::SendData, this, &MainWindow::recieveData)){
+    qDebug() << "ok";
+     m_register_form_ptr->setModal(true);
+
+     m_register_form_ptr->show();
+}
+else qDebug()<<"Erora";
+}
+
+void MainWindow::updateUsers()
+{
+    QSqlQuery query;
+    query.exec("SELECT id, u_login, u_password FROM users");
+
+    while (query.next()) { qDebug() << "2";
+      QString _id = query.value(0).toString();
+      QString login = query.value(1).toString();
+      QString password = query.value(2).toString();
+      m_users_map.insert(login, password);
+      qDebug() << login << " "<< password ;
     }
 }
 
