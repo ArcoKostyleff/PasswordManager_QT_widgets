@@ -41,6 +41,6 @@ private:
      AddRowForm *m_addrowform_ptr;
 
      QString m_db_path= "proj2.db";
-    Ui::LoginForm *ui;
+     Ui::LoginForm *ui;
 };
 #endif // LOGINFORM_H

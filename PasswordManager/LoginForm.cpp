@@ -1,6 +1,7 @@
 #include "LoginForm.h"
 #include "ui_LoginForm.h"
 #include <QString>
+#include <QSqlError>
 LoginForm::LoginForm(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::LoginForm)
@@ -12,9 +13,11 @@ LoginForm::LoginForm(QWidget *parent)
 
 
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName(m_db_path);
+//    QSqlQuery query;
+//    query.exec("")
+    db.setDatabaseName("D:\\QTProj\\PasswordManager\\proj2.db");
     db.open();
-
+    qDebug()<<"aboba " <<db.lastError().text();
 
     ui->tableWidget->insertColumn(3);
    UpdateTable();
@@ -44,7 +47,7 @@ void LoginForm::UpdateTable()
        ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,1,  new QTableWidgetItem(login) );
        ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,2,  new QTableWidgetItem(password) );
        ui-> tableWidget->setCellWidget(ui->tableWidget->rowCount()-1, 3, qb);
-       }
+     }
      ui->tableWidget->update();
 
 }

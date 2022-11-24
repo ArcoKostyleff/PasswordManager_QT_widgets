@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QSqlError>
 #include <QDebug>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -14,8 +15,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     qDebug() << "go on";
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("proj2.db");
+    db.setDatabaseName("D:\\QTProj\\PasswordManager\\proj2.db");
     db.open();
+    qDebug()<<"aboba " <<db.lastError().text();
+
     updateUsers();
 }
 
