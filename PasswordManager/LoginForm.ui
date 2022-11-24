@@ -29,20 +29,6 @@
     <layout class="QGridLayout" name="gridLayout_2">
      <item row="0" column="0">
       <layout class="QGridLayout" name="gridLayout">
-       <item row="3" column="0">
-        <widget class="QPushButton" name="pushButton">
-         <property name="text">
-          <string>Update Table</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLineEdit" name="loginLine">
-         <property name="text">
-          <string>Find </string>
-         </property>
-        </widget>
-       </item>
        <item row="2" column="0">
         <widget class="QTableWidget" name="tableWidget">
          <row>
@@ -80,6 +66,13 @@
            <string>alex</string>
           </property>
          </item>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>Update Table</string>
+         </property>
         </widget>
        </item>
       </layout>
